@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Bahan Ajar - SITTA Universitas Terbuka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div id="rekap-page" class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="assets/logo/logo-ut-putih.png" alt="SITTA Logo" class="logo-icon">
+                    <h2 class="logo-text">SITTA</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" title="Minimize Sidebar">
+                    <i data-lucide="chevrons-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i data-lucide="home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="stok.html"><i data-lucide="book-open"></i> <span>Informasi Bahan Ajar</span></a></li>
+                    <li><a href="tracking.html"><i data-lucide="truck"></i> <span>Tracking Pengiriman</span></a></li>
+                    <li class="has-submenu open">
+                        <a href="#" class="submenu-toggle"><i data-lucide="file-text"></i> <span>Laporan</span> <i data-lucide="chevron-down" class="chevron"></i></a>
+                        <ul class="submenu">
+                            <li><a href="monitoring.html"><i data-lucide="activity"></i> <span>Monitoring Progress DO</span></a></li>
+                            <li><a href="rekap.html" class="active"><i data-lucide="bar-chart-3"></i> <span>Rekap Bahan Ajar</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="histori.html"><i data-lucide="clock"></i> <span>Histori Transaksi</span></a></li>
+                    <li><a href="index.html" id="logoutButton"><i data-lucide="log-out"></i> <span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Rekap Bahan Ajar</h1>
+                <div class="header-actions">
+                    <button class="menu-toggle" id="menu-toggle">☰</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="card">
+                    <h2>Rekapitulasi Bahan Ajar</h2>
+                    <p class="text-muted">Halaman untuk melihat rekapitulasi data bahan ajar berdasarkan jenis dan periode tertentu.</p>
+                    
+                    <div style="margin: 24px 0;">
+                        <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--text-color);">Filter Laporan</h3>
+                        <form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px;">
+                            <div class="form-group">
+                                <label>Periode</label>
+                                <select>
+                                    <option>Bulan Ini</option>
+                                    <option>3 Bulan Terakhir</option>
+                                    <option>6 Bulan Terakhir</option>
+                                    <option>Tahun Ini</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Jenis Barang</label>
+                                <select>
+                                    <option>Semua Jenis</option>
+                                    <option>BMP</option>
+                                    <option>Modul</option>
+                                    <option>Panduan Praktikum</option>
+                                </select>
+                            </div>
+                        </form>
+                        <button class="btn" style="display: inline-flex; align-items: center; gap: 8px;">
+                            <i data-lucide="download" style="width: 18px; height: 18px;"></i>
+                            <span>Cetak Laporan (PDF)</span>
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="stok-table">
+                            <thead>
+                                <tr>
+                                    <th>Jenis Barang</th>
+                                    <th>Jumlah Item</th>
+                                    <th>Total Stok</th>
+                                    <th>Rata-rata Stok</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted" style="padding: 40px;">
+                                        <i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.3;"></i>
+                                        <p>Belum ada data rekapitulasi. Pilih filter dan klik tombol untuk menghasilkan laporan.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

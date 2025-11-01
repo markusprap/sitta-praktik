@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Progress DO - SITTA Universitas Terbuka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div id="monitoring-page" class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="assets/logo/logo-ut-putih.png" alt="SITTA Logo" class="logo-icon">
+                    <h2 class="logo-text">SITTA</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" title="Minimize Sidebar">
+                    <i data-lucide="chevrons-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i data-lucide="home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="stok.html"><i data-lucide="book-open"></i> <span>Informasi Bahan Ajar</span></a></li>
+                    <li><a href="tracking.html"><i data-lucide="truck"></i> <span>Tracking Pengiriman</span></a></li>
+                    <li class="has-submenu open">
+                        <a href="#" class="submenu-toggle"><i data-lucide="file-text"></i> <span>Laporan</span> <i data-lucide="chevron-down" class="chevron"></i></a>
+                        <ul class="submenu">
+                            <li><a href="monitoring.html" class="active"><i data-lucide="activity"></i> <span>Monitoring Progress DO</span></a></li>
+                            <li><a href="rekap.html"><i data-lucide="bar-chart-3"></i> <span>Rekap Bahan Ajar</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="histori.html"><i data-lucide="clock"></i> <span>Histori Transaksi</span></a></li>
+                    <li><a href="index.html" id="logoutButton"><i data-lucide="log-out"></i> <span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Monitoring Progress Delivery Order</h1>
+                <div class="header-actions">
+                    <button class="menu-toggle" id="menu-toggle">☰</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="card">
+                    <h2>Progress Pengiriman Bahan Ajar</h2>
+                    <p class="text-muted">Halaman untuk memonitor progress delivery order bahan ajar dalam proses pengiriman.</p>
+                    
+                    <div class="table-container" style="margin-top: 24px;">
+                        <table class="stok-table">
+                            <thead>
+                                <tr>
+                                    <th>No. DO</th>
+                                    <th>Tujuan</th>
+                                    <th>Total Paket</th>
+                                    <th>Status</th>
+                                    <th>Progress</th>
+                                    <th>Tanggal Kirim</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted" style="padding: 40px;">
+                                        <i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.3;"></i>
+                                        <p>Belum ada data monitoring progress delivery order.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

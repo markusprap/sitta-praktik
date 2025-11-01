@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SITTA Universitas Terbuka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <main id="login-page" class="login-container">
+        <div class="login-form">
+            <div class="login-logo">
+                <img src="assets/logo/logo-ut.webp" alt="Logo Universitas Terbuka">
+            </div>
+            <h1>SITTA</h1>
+            <p>Sistem Informasi Tiras dan Transaksi Bahan Ajar</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="nama@ut.ac.id" required>
+                    <div class="error-message">Email tidak boleh kosong.</div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Masukkan password" required>
+                    <div class="error-message">Password tidak boleh kosong.</div>
+                </div>
+                <button type="submit" class="btn" id="loginButton">Masuk</button>
+            </form>
+            <div class="login-links">
+                <a href="#" id="forgotPasswordLink">Lupa password?</a>
+                <span class="separator">•</span>
+                <a href="#" id="registerLink">Belum punya akun?</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Alert Dialog untuk Error Login -->
+    <div id="alertDialog" class="modal-overlay">
+        <div class="alert-dialog">
+            <div class="alert-icon error">
+                <i data-lucide="alert-circle"></i>
+            </div>
+            <h3 id="alertTitle">Login Gagal</h3>
+            <p id="alertMessage">Email atau password yang Anda masukkan salah.</p>
+            <button class="btn btn-alert" id="alertOkButton">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal Lupa Password -->
+    <div id="forgotPasswordModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Lupa Password</h2>
+                <button class="modal-close-btn" id="closeForgotModal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p>Silakan hubungi administrator sistem untuk mereset password Anda.</p>
+                <p class="mt-2 text-muted">Email: <strong>hallo-ut@ecampus.ut.ac.id</strong></p>
+                <p class="mt-2 text-muted">Telepon: <strong>(021) 1500024</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="closeForgotBtn">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Daftar -->
+    <div id="registerModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Daftar Akun Baru</h2>
+                <button class="modal-close-btn" id="closeRegisterModal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p>Untuk mendaftar akun baru SITTA, silakan hubungi administrator Universitas Terbuka.</p>
+                <div style="margin-top: 20px; padding: 16px; background: var(--background-color); border-radius: 8px;">
+                    <p class="text-muted" style="margin: 0 0 8px 0;"><strong>Kontak Administrator:</strong></p>
+                    <p class="text-muted" style="margin: 4px 0;">Email: <strong>hallo-ut@ecampus.ut.ac.id</strong></p>
+                    <p class="text-muted" style="margin: 4px 0;">Telepon: <strong>(021) 1500024</strong></p>
+                    <p class="text-muted" style="margin: 4px 0;">Unit: <strong>Pusat Layanan Bahan Ajar Universitas Terbuka</strong></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="closeRegisterBtn">Tutup</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SITTA Universitas Terbuka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div id="dashboard-page" class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="assets/logo/logo-ut-putih.png" alt="SITTA Logo" class="logo-icon">
+                    <h2 class="logo-text">SITTA</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" title="Minimize Sidebar">
+                    <i data-lucide="chevrons-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active"><i data-lucide="home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="stok.html"><i data-lucide="book-open"></i> <span>Informasi Bahan Ajar</span></a></li>
+                    <li><a href="tracking.html"><i data-lucide="truck"></i> <span>Tracking Pengiriman</span></a></li>
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-toggle"><i data-lucide="file-text"></i> <span>Laporan</span> <i data-lucide="chevron-down" class="chevron"></i></a>
+                        <ul class="submenu">
+                            <li><a href="monitoring.html"><i data-lucide="activity"></i> <span>Monitoring Progress DO</span></a></li>
+                            <li><a href="rekap.html"><i data-lucide="bar-chart-3"></i> <span>Rekap Bahan Ajar</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="histori.html"><i data-lucide="clock"></i> <span>Histori Transaksi</span></a></li>
+                    <li><a href="index.html" id="logoutButton"><i data-lucide="log-out"></i> <span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1 id="greeting">Selamat Datang!</h1>
+                <div class="header-actions">
+                    <button class="menu-toggle" id="menu-toggle">☰</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="welcome-banner">
+                    <h2>Dashboard SITTA</h2>
+                    <p>Sistem Informasi Tiras dan Transaksi Bahan Ajar Universitas Terbuka</p>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Total Bahan Ajar</h3>
+                        <div class="stat-value" id="totalStok">0</div>
+                        <div class="stat-label">Item tersedia</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <h3>Total Stok</h3>
+                        <div class="stat-value" id="totalUnit">0</div>
+                        <div class="stat-label">Unit tersedia</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <h3>Pengiriman Aktif</h3>
+                        <div class="stat-value" id="totalPengiriman">0</div>
+                        <div class="stat-label">Dalam proses</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Quick Menu</h2>
+                    <div class="quick-menu">
+                        <a href="stok.html" class="quick-menu-item">
+                            <div class="quick-menu-icon">
+                                <i data-lucide="book-open"></i>
+                            </div>
+                            <h3>Bahan Ajar</h3>
+                            <p>Kelola stok bahan ajar</p>
+                        </a>
+                        <a href="tracking.html" class="quick-menu-item">
+                            <div class="quick-menu-icon">
+                                <i data-lucide="truck"></i>
+                            </div>
+                            <h3>Tracking</h3>
+                            <p>Lacak pengiriman</p>
+                        </a>
+                        <a href="monitoring.html" class="quick-menu-item">
+                            <div class="quick-menu-icon">
+                                <i data-lucide="activity"></i>
+                            </div>
+                            <h3>Monitoring</h3>
+                            <p>Progress delivery order</p>
+                        </a>
+                        <a href="histori.html" class="quick-menu-item">
+                            <div class="quick-menu-icon">
+                                <i data-lucide="clock"></i>
+                            </div>
+                            <h3>Histori</h3>
+                            <p>Riwayat transaksi</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

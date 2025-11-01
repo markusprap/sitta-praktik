@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Stok - SITTA Universitas Terbuka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div id="stok-page" class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="assets/logo/logo-ut-putih.png" alt="SITTA Logo" class="logo-icon">
+                    <h2 class="logo-text">SITTA</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle" title="Minimize Sidebar">
+                    <i data-lucide="chevrons-left"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html"><i data-lucide="home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="stok.html" class="active"><i data-lucide="book-open"></i> <span>Informasi Bahan Ajar</span></a></li>
+                    <li><a href="tracking.html"><i data-lucide="truck"></i> <span>Tracking Pengiriman</span></a></li>
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-toggle"><i data-lucide="file-text"></i> <span>Laporan</span> <i data-lucide="chevron-down" class="chevron"></i></a>
+                        <ul class="submenu">
+                            <li><a href="monitoring.html"><i data-lucide="activity"></i> <span>Monitoring Progress DO</span></a></li>
+                            <li><a href="rekap.html"><i data-lucide="bar-chart-3"></i> <span>Rekap Bahan Ajar</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="histori.html"><i data-lucide="clock"></i> <span>Histori Transaksi</span></a></li>
+                    <li><a href="index.html" id="logoutButton"><i data-lucide="log-out"></i> <span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Informasi Stok Bahan Ajar</h1>
+                <div class="header-actions">
+                    <button class="menu-toggle" id="menu-toggle">☰</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="card">
+                    <h2>Daftar Stok Bahan Ajar</h2>
+                    <div class="table-container">
+                        <table class="stok-table">
+                            <thead>
+                                <tr>
+                                    <th>Sampul</th>
+                                    <th>Kode Lokasi</th>
+                                    <th>Kode Barang</th>
+                                    <th>Nama Barang</th>
+                                    <th>Jenis</th>
+                                    <th>Edisi</th>
+                                    <th>Stok</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stokContainer">
+                                <!-- Stock data will be dynamically inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Tambahkan Stok Baru</h2>
+                    <form id="addStockForm">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="form-group">
+                                <label for="kodeLokasi">Kode Lokasi</label>
+                                <input type="text" id="kodeLokasi" placeholder="Contoh: 0TMP01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kodeBarang">Kode Barang</label>
+                                <input type="text" id="kodeBarang" placeholder="Contoh: ASIP4301" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="namaBarang">Nama Barang</label>
+                                <input type="text" id="namaBarang" placeholder="Nama bahan ajar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jenisBarang">Jenis Barang</label>
+                                <select id="jenisBarang" required>
+                                    <option value="">Pilih jenis</option>
+                                    <option value="BMP">BMP</option>
+                                    <option value="Modul">Modul</option>
+                                    <option value="Praktikum Kit">Praktikum Kit</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="edisi">Edisi</label>
+                                <input type="text" id="edisi" placeholder="Contoh: 2" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stok">Jumlah Stok</label>
+                                <input type="number" id="stok" placeholder="0" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="coverUpload">Sampul Buku (Opsional)</label>
+                                <input type="file" id="coverUpload" accept="image/jpeg,image/jpg,image/png" class="file-input">
+                                <div class="file-preview" id="filePreview" style="display: none;">
+                                    <img id="previewImage" src="" alt="Preview">
+                                    <button type="button" class="btn-remove-preview" id="removePreview">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn mt-3">Tambahkan Stok</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Edit Stok -->
+    <div id="editStockModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Edit Stok Bahan Ajar</h2>
+                <button class="modal-close-btn" id="closeEditModal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <form id="editStockForm">
+                    <input type="hidden" id="editIndex">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div class="form-group">
+                            <label for="editKodeLokasi">Kode Lokasi</label>
+                            <input type="text" id="editKodeLokasi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editKodeBarang">Kode Barang</label>
+                            <input type="text" id="editKodeBarang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editNamaBarang">Nama Barang</label>
+                            <input type="text" id="editNamaBarang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editJenisBarang">Jenis Barang</label>
+                            <select id="editJenisBarang" required>
+                                <option value="">Pilih jenis</option>
+                                <option value="BMP">BMP</option>
+                                <option value="Modul">Modul</option>
+                                <option value="Praktikum Kit">Praktikum Kit</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEdisi">Edisi</label>
+                            <input type="text" id="editEdisi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editStok">Jumlah Stok</label>
+                            <input type="number" id="editStok" min="0" required>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; margin-top: 20px;">
+                        <button type="submit" class="btn">Simpan Perubahan</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEditBtn">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lihat Sampul -->
+    <div id="coverModal" class="modal-overlay">
+        <div class="modal modal-cover">
+            <div class="modal-header">
+                <h2 id="coverTitle">Sampul Buku</h2>
+                <button class="modal-close-btn" id="closeCoverModal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div class="cover-preview">
+                    <img id="coverImage" src="" alt="Sampul Buku">
+                    <p id="coverInfo" class="text-muted mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Confirmation Dialog -->
+    <div id="confirmDialog" class="modal-overlay">
+        <div class="modal modal-confirm">
+            <div class="modal-header">
+                <h2 id="confirmTitle">Konfirmasi</h2>
+                <button class="modal-close-btn" id="closeConfirmDialog">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p id="confirmMessage" style="margin-bottom: 24px; line-height: 1.6;"></p>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button class="btn btn-secondary" id="confirmCancel">Batal</button>
+                    <button class="btn btn-danger" id="confirmOk">Ya, Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="notification">
+        <i data-lucide="check-circle"></i>
+        <span id="notificationMessage"></span>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
